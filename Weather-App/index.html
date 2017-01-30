@@ -1,30 +1,57 @@
+<!DocType html>
 <html>
-
     <head>
-    
         <title>Weather App</title>
-        <script type="text/javascript">
-        
-        </script>
         <style>
             body{background: #f3f3f3;}
-            .weatherApp{
-                width: 250px;
-                background:#fff;
-                box-shadow: 1px 2px 1px #cccccc;
-                position: absolute;
-                margin: 0 auto;
+            .weatherApp{ width: 600px; height: 270px; background: #fff url('https://s-media-cache-ak0.pinimg.com/originals/e9/e9/90/e9e99039ad9f8445e9b747f8e0b159ab.gif') no-repeat -250px -180px; border: 1px solid #ccc; box-shadow: 1px 2px 1px #ccc;
+            position: absolute; top: 50%; left: 50%; margin-left: -300px; margin-top: -135px;
             }
-            .weatherApp span {padding: 5px;}
+            .app{
+                position: relative;
+                left: 300px;
+                top: 40px;
+            }
+            .app span{ font-size: 30px; display: inline-block;}
+            #location{color: red; font-weight: bold;}
+            #temp{color: darkblue; font-weight: bold;}
+            .controls{background:skyblue; padding:10px; position: relative; top: -45px;}
+            select {margin-right: 30px;}
+            input[type="submit"]{margin-left: 30px;}
         </style>
+        
+        <script type="text/javascript">
+            
+            
+            var obj = {
+                
+                
+                
+                
+            }
+            
+            
+            
+        </script>
+        
+        
     </head>
     
     <body>
         
+        
         <div class="weatherApp">
-            <span>Location: </span><span id="location"></span><br>
-            <span>Temperature: </span><span id=temp></span>
-        </div>
+            <div class="controls">
+                Location <select><option>Gurgaon</option></select>
+                Celsius<input type="radio" name="tempType" value="Celsius"> Fahrenheit <input type="radio" name="tempType" value="Fahrenheit">
+                
+                <input type="submit"/>
+                
+            </div>
+            <div class="app">
+            <span>Location: </span> <span id="location">Gurgaon</span><br>
+            <span>Temperature: </span> <span id=temp>-25<sup>o</sup>C</span>
+        </div></div>
         
     </body>
     
