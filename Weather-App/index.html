@@ -1,170 +1,82 @@
 <!DocType html>
 <html>
-
 <head>
     <title>Weather App</title>
-    <style>
-        body {
-            background: #f3f3f3;
-        }
-        
-        .weatherApp {
-            width: 600px;
-            height: 270px;
-            background: #fff url('https://s-media-cache-ak0.pinimg.com/originals/e9/e9/90/e9e99039ad9f8445e9b747f8e0b159ab.gif') no-repeat -250px -180px;
-            border: 1px solid #ccc;
-            box-shadow: 1px 2px 1px #ccc;
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            margin-left: -300px;
-            margin-top: -135px;
-        }
-        
-        .app {
-            position: relative;
-            left: 300px;
-            top: 40px;
-        }
-        
-        .app span {
-            font-size: 30px;
-            display: inline-block;
-        }
-        
-        #showLocation {
-            color: red;
-            font-weight: bold;
-        }
-        
-        #showTemp {
-            color: darkblue;
-            font-weight: bold;
-        }
-        
-        .controls {
-            background: skyblue;
-            padding: 10px;
-            position: relative;
-            top: -45px;
-        }
-        
-        select {
-            margin-right: 30px;
-        }
-        
-        input[type="submit"] {
-            margin-left: 30px;
-        }
-    </style>
+    <link href="style.css" rel="stylesheet" type="text/css" />
     <script type="text/javascript">
         var data = {
-            gurgaon: {
-                name: 'Gurgaon'
-                , temp: 25
+            gurgaon: { name: 'Gurgaon', temp: 25},
+            delhi: {name: 'Delhi', temp: 30},
+            mumbai:{name: 'Mumbai', temp: 10}
             }
-            , delhi: {
-                name: 'Delhi'
-                , temp: 30
+
+        //City Dropdown
+        function citiesDropdown() {
+            var cityName = [];
+            var sel = document.getElementById('city');
+            for (c in data) {
+                cityName.push(data[c].name);
             }
-            , mumbai: {
-                name: 'Mumbai'
-                , temp: 10
+            for (var i = 0; i < cityName.length; i++) {
+                var opt = document.createElement('option');
+                opt.innerHTML = cityName[i];
+                opt.value = cityName[i];
+                sel.appendChild(opt);
             }
-        }
-
-
-function createCityDropdown(){
-    var cityName=[];
-var city = document.getElementById("city").value;
-
-for(c in data){
-    
-        cityName.push(data[c].name);
-                            
-           if( city == data[c].name){
-               celsius = data[c].temp;
-               break;
-           }
-}
-
-var sel = document.getElementById('city');
-for(var i = 0; i < cityName.length; i++) {
-    var opt = document.createElement('option');
-    opt.innerHTML = cityName[i];
-    opt.value = cityName[i];
-    sel.appendChild(opt);
-}        
-}
+        };
         
-function getCityTemp(){
-        
-    var weatherApp = document.getElementById("weatherApp");
-    var showLocation = document.getElementById("showLocation");
-    var showTemp = document.getElementById("showTemp");
-    var tempType = document.getElementById("tempType").value;
-    var city = document.getElementById("city").value;  
-    //console.log(city);
-    //console.log(tempType);
-   
-    var currentCityTemp;
-    
-     
-    for(c in data){
-                        
-           if( city == data[c].name){
-               celsius = data[c].temp;
-               break;
-           }
-    }
-
-    //console.log(city);
-    //console.log(data[c].name);   
-    
-    if(tempType == 'F'){
+        //Get City Temperature
+        function getCityTemp() {
+            var showLocation = document.getElementById("showLocation");
+            var showTemp = document.getElementById("showTemp");
+            var tempType = document.getElementById("tempType").value;
+            var city = document.getElementById("city").value;
             
-        var temperature = celsius * 9 / 5 + 32 + '\xB0F';
-        
-    }else{
-        var temperature = celsius + '\xB0C';
-    } 
-        
-    
-   //console.log(tempType);
-    //console.log(typeof tempType);
-   //console.log(temperature); 
-    
-    showLocation.innerHTML = city;
-    
-    showTemp.innerHTML = temperature;
+            for (c in data) {
+                if (city == data[c].name) {
+                    celsius = data[c].temp;
+                    break;
+                }
+            }
+  
+            if (tempType == 'F') {
+                var temperature = celsius * 9 / 5 + 32 + '\xB0F';
+            }
+            else {
+                var temperature = celsius + '\xB0C';
+            }
 
-
-
-};
-        
+            showLocation.innerHTML = city;
+            showTemp.innerHTML = temperature;
+        };
+    
     </script>
 </head>
 
-<body onload="createCityDropdown();">
-    <div class="weatherApp" id="weatherApp">
-        
-        <div class="controls"> 
+<body onload="citiesDropdown();">
+    <div class="weatherApp">
+        <div class="controls">
             
             Location
-            <select name="city" id="city"></select> 
-
-            <select name="tempType" id="tempType">
+            <select name="city" id="city"></select>
+            
+            <select id="tempType">
                 <option value="C" selected>Celsius</option>
                 <option value="F">Fahrenheit</option>
-            </select> 
+            </select>
             
             <button id="Submit" onclick="getCityTemp();">Submit</button>
-        </div>
+            
+        </div><!--/.controls-->
         
+        <div class="app">
+            
+            <span>Location: </span> <span id="showLocation">N/A</span>
+            <br> <span>Temperature: </span> <span id="showTemp">N/A</span>
+            
+        </div><!--/.app-->
         
-        <div class="app"> <span>Location: </span> <span id="showLocation">N/A</span>
-            <br> <span>Temperature: </span> <span id="showTemp">N/A</span></div>
-    </div>
+    </div><!--/.weatherApp-->
 </body>
 
 </html>

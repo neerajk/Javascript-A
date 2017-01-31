@@ -1,0 +1,52 @@
+ body {
+            background: #f3f3f3;
+        }
+        
+        .weatherApp {
+            width: 600px;
+            height: 270px;
+            background: #fff url('https://s-media-cache-ak0.pinimg.com/originals/e9/e9/90/e9e99039ad9f8445e9b747f8e0b159ab.gif') no-repeat -250px -180px;
+            border: 1px solid #ccc;
+            box-shadow: 1px 2px 1px #ccc;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            margin-left: -300px;
+            margin-top: -135px;
+        }
+        
+        .app {
+            position: relative;
+            left: 300px;
+            top: 40px;
+        }
+        
+        .app span {
+            font-size: 30px;
+            display: inline-block;
+        }
+        
+        #showLocation {
+            color: red;
+            font-weight: bold;
+        }
+        
+        #showTemp {
+            color: darkblue;
+            font-weight: bold;
+        }
+        
+        .controls {
+            background: skyblue;
+            padding: 10px;
+            position: relative;
+            top: -45px;
+        }
+        
+        select {
+            margin-right: 30px;
+        }
+        
+        input[type="submit"] {
+            margin-left: 30px;
+        }
